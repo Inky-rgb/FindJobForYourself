@@ -30,15 +30,14 @@ import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 
-import net.coobird.thumbnailator.Thumbnails;
 import net.yukitteru.resume.model.LanguageLevel;
 import net.yukitteru.resume.model.LanguageType;
 
 /**
- *
  * Please add postgresql JDBC driver to classpath before launch this generator
  *
  * @author Yukitteru
@@ -54,14 +53,14 @@ public class TestDataGenerator {
     private static final String CERTIFICATES_PATH = "external/test-data/certificates/";
     private static final String MEDIA_DIR = "C:/Users/Yukitteru/Desktop/ResumeProject/src/main/webapp/media";
     private static final String COUTRY = "Russian";
-    private static final String[] CITIES = { "Moscow", "Saint Petersburg", "Novosibirsk" };
-    private static final String[] FOREGIN_LANGUAGES = { "Spanish", "French", "German", "Italian" };
+    private static final String[] CITIES = {"Moscow", "Saint Petersburg", "Novosibirsk"};
+    private static final String[] FOREGIN_LANGUAGES = {"Spanish", "French", "German", "Italian"};
     private static final String PASSWORD_HASH = "$2a$10$q7732w6Rj3kZGhfDYSIXI.wFp.uwTSi2inB2rYHvm1iDIAf1J1eVq";
 
-    private static final String[] HOBBIES = { "Cycling", "Handball", "Football", "Basketball", "Bowling", "Boxing", "Volleyball", "Baseball", "Skating", "Skiing", "Table tennis", "Tennis",
+    private static final String[] HOBBIES = {"Cycling", "Handball", "Football", "Basketball", "Bowling", "Boxing", "Volleyball", "Baseball", "Skating", "Skiing", "Table tennis", "Tennis",
             "Weightlifting", "Automobiles", "Book reading", "Cricket", "Photo", "Shopping", "Cooking", "Codding", "Animals", "Traveling", "Movie", "Painting", "Darts", "Fishing", "Kayak slalom",
             "Games of chance", "Ice hockey", "Roller skating", "Swimming", "Diving", "Golf", "Shooting", "Rowing", "Camping", "Archery", "Pubs", "Music", "Computer games", "Authorship", "Singing",
-            "Foreign lang", "Billiards", "Skateboarding", "Collecting", "Badminton", "Disco" };
+            "Foreign lang", "Billiards", "Skateboarding", "Collecting", "Badminton", "Disco"};
 
     private static List<LanguageType> languageTypes = new ArrayList<>(EnumSet.allOf(LanguageType.class));
     private static List<LanguageLevel> languageLevels = new ArrayList<>(EnumSet.allOf(LanguageLevel.class));
@@ -143,7 +142,7 @@ public class TestDataGenerator {
         List<Profile> list = new ArrayList<>(photos.length);
         for (File f : photos) {
             String[] names = f.getName().replace(".jpg", "").split(" ");
-            list.add(new Profile(names[0], names[1], f.getAbsolutePath()));
+            list.add(new Profile(names[0], names[0], f.getAbsolutePath()));
         }
         Collections.sort(list, new Comparator<Profile>() {
             @Override
@@ -479,24 +478,24 @@ public class TestDataGenerator {
 
     private static List<ProfileConfig> getProfileConfigs() {
         List<ProfileConfig> res = new ArrayList<>();
-        res.add(new ProfileConfig("Junior java trainee position", "Java core course with developing one simple console application", new Course[] { Course.createCoreCourse() }, 0));
+        res.add(new ProfileConfig("Junior java trainee position", "Java core course with developing one simple console application", new Course[]{Course.createCoreCourse()}, 0));
         res.add(new ProfileConfig("Junior java trainee position", "One Java professional course with developing web application blog (Link to demo is provided)",
-                new Course[] { Course.createBaseCourse() }, 0));
+                new Course[]{Course.createBaseCourse()}, 0));
         res.add(new ProfileConfig("Junior java developer position", "One Java professional course with developing web application resume (Link to demo is provided)",
-                new Course[] { Course.createAdvancedCourse() }, 0));
+                new Course[]{Course.createAdvancedCourse()}, 0));
         res.add(new ProfileConfig("Junior java developer position", "One Java professional course with developing web application resume (Link to demo is provided)",
-                new Course[] { Course.createAdvancedCourse() }, 1));
+                new Course[]{Course.createAdvancedCourse()}, 1));
         res.add(new ProfileConfig("Junior java developer position", "Two Java professional courses with developing two web applications: blog and resume (Links to demo are provided)",
-                new Course[] { Course.createAdvancedCourse(), Course.createBaseCourse() }, 1));
+                new Course[]{Course.createAdvancedCourse(), Course.createBaseCourse()}, 1));
         res.add(new ProfileConfig("Junior java developer position", "Two Java professional courses with developing two web applications: blog and resume (Links to demo are provided)",
-                new Course[] { Course.createAdvancedCourse(), Course.createBaseCourse() }, 1));
+                new Course[]{Course.createAdvancedCourse(), Course.createBaseCourse()}, 1));
         res.add(new ProfileConfig("Junior java developer position", "Two Java professional courses with developing two web applications: blog and resume (Links to demo are provided)",
-                new Course[] { Course.createAdvancedCourse(), Course.createBaseCourse() }, 1));
+                new Course[]{Course.createAdvancedCourse(), Course.createBaseCourse()}, 1));
         res.add(new ProfileConfig("Junior java developer position", "Two Java professional courses with developing two web applications: blog and resume (Links to demo are provided)",
-                new Course[] { Course.createAdvancedCourse(), Course.createBaseCourse() }, 2));
+                new Course[]{Course.createAdvancedCourse(), Course.createBaseCourse()}, 2));
         res.add(new ProfileConfig("Junior java developer position",
                 "Three Java professional courses with developing one console application and two web applications: blog and resume (Links to demo are provided)",
-                new Course[] { Course.createAdvancedCourse(), Course.createBaseCourse(), Course.createCoreCourse() }, 2));
+                new Course[]{Course.createAdvancedCourse(), Course.createBaseCourse(), Course.createCoreCourse()}, 2));
         return res;
     }
 
@@ -515,7 +514,6 @@ public class TestDataGenerator {
     }
 
     /**
-     *
      * @author Yukitteru
      */
     private static final class ProfileConfig {
@@ -534,7 +532,6 @@ public class TestDataGenerator {
     }
 
     /**
-     *
      * @author Yukitteru
      */
     private static final class Profile {
@@ -556,7 +553,6 @@ public class TestDataGenerator {
     }
 
     /**
-     *
      * @author Yukitteru
      */
     private static final class Certificate {
@@ -571,7 +567,6 @@ public class TestDataGenerator {
     }
 
     /**
-     *
      * @author Yukitteru
      */
     private static final class Course {

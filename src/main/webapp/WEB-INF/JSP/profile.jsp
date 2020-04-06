@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/bootstrap-theme.css">
-    <link rel="stylesheet" href="/static/css/font-awesome.css">
-    <link rel="stylesheet" href="/static/css/timeline.css">
+<%--
+  Created by IntelliJ IDEA.
+  User: Yukitteru
+  Date: 06.04.2020
+  Time: 23:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true"%>
 
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
-
-</head>
-<body>
 <div class="container" style="font-family: 'Comic Neue', cursive;">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -48,7 +43,7 @@
             <div class="panel panel-primary">
                 <div class="panel-body">
                     <img class="img-responsive; img-rounded" style="width: 100%; padding-top: 0;"
-                         src="media/avatar/293b7886-9f11-43a0-9a2d-81d1f05b659c.jpg">
+                         src="/media/avatar/1e9b951b-046f-497e-b518-abb1d76f7f6c.jpg">
                     <h1 style="font-weight: bold; text-align: center">Arseny Varyagin</h1>
                     <h6 style="font-weight: bold;text-align: center">Chelyabinsk, Russia</h6>
                     <h6 style="text-align: center">
@@ -59,7 +54,7 @@
 
                         <tr>
                             <th scope="row"></th>
-                            <td><i class="fa fa-phone"></i>&nbsp; +79995884331</td>
+                            <td><i class="fab fa-phone"></i>&nbsp; +79995884331</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
@@ -220,7 +215,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading"><i class="fa fa-certificate"></i> Certificates</div>
                 <div class="panel-body">
-                    <img src="media/certificates/1fae3ebf-e961-4072-9f09-efb46322a921-sm.jpg" style="padding-left: 45%">
+                    <img src="/media/certificates/2c3a01a9-a725-4d8c-b364-3b58897f8aff-sm.jpg" style="padding-left: 45%">
                 </div>
                 <a href="#" style="padding-left: 44%; padding-bottom: 3%">Mongo_Certificate</a>
             </div>
@@ -278,10 +273,3 @@
         <div class="panel-footer">Panel footer</div>
     </div>
 </div>
-
-
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/app.js"></script>
-</body>
-</html>
