@@ -47,8 +47,8 @@ public class TestDataGenerator {
 
     // JDBC setting for database
     private static final String JDBC_URL = "jdbc:postgresql://localhost/resume";
-    private static final String JDBC_USERNAME = "resume";
-    private static final String JDBC_PASSWORD = "udh22d6g";
+    private static final String JDBC_USERNAME = "YOUR_DB_NAME";
+    private static final String JDBC_PASSWORD = "YOUR_PASSWORD";
 
     private static final String PHOTO_PATH = "external/test-data/photos/";
     private static final String CERTIFICATES_PATH = "external/test-data/certificates/";
