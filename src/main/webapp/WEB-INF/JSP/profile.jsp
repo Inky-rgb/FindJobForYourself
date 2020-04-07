@@ -19,6 +19,11 @@
             <resume:profile-cources/>
             <resume:profile-education/>
         </div>
+        <div class="col-xs-12 visible-xs-block">
+            <resume:profile-languages />
+            <resume:profile-hobby />
+            <resume:profile-info />
+        </div>
     </div>
 
     </div>
