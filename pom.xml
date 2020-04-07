@@ -25,7 +25,6 @@
                         <debug>true</debug>
                     </configuration>
                 </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -36,7 +35,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-
         </pluginManagement>
         <plugins>
             <plugin>
@@ -86,6 +84,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.1.7</version>
@@ -95,7 +100,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -116,13 +120,22 @@
             <artifactId>joda-time</artifactId>
             <version>2.9.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.sitemesh</groupId>
             <artifactId>sitemesh</artifactId>
             <version>3.0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
     </dependencies>
 </project>
 
