@@ -2,6 +2,7 @@ package net.yukitteru.resume.form;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 
 import net.yukitteru.resume.entity.Skill;
 
@@ -11,6 +12,7 @@ import net.yukitteru.resume.entity.Skill;
  */
 public class SkillForm implements Serializable {
     private static final long serialVersionUID = 4135568197764740034L;
+    @Valid
     private List<Skill> items = new ArrayList<>();
 
     public SkillForm() {

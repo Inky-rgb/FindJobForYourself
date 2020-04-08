@@ -1,8 +1,8 @@
 package net.yukitteru.resume.controller;
 
 
-import net.yukitteru.resume.form.SkillForm;
-import net.yukitteru.resume.repository.storage.ProfileRepository;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import net.yukitteru.resume.repository.storage.SkillCategoryRepository;
+import net.yukitteru.resume.form.SkillForm;
+import net.yukitteru.resume.service.EditProfileService;
+import net.yukitteru.resume.util.SecurityUtil;
 
 /**
  * @author Yukitteru
@@ -21,10 +23,8 @@ import net.yukitteru.resume.repository.storage.SkillCategoryRepository;
 public class EditProfileController {
 
 	@Autowired
-	private SkillCategoryRepository skillCategoryRepository;
+	private EditProfileService editProfileService;
 
-	@Autowired
-	private ProfileRepository profileRepository;
 
 	@RequestMapping(value="/edit", method=RequestMethod.GET)
 	public String getEditProfile(){
@@ -32,22 +32,22 @@ public class EditProfileController {
 	}
 
 	@RequestMapping(value = "/edit/skills", method = RequestMethod.GET)
-	public String getEditTechSkills(Model model) {
-		model.addAttribute("skillForm", new SkillForm(profileRepository.findOne(1L).getSkills()));
+	public String getEditSkills(Model model) {
+		model.addAttribute("skillForm", new SkillForm(editProfileService.listSkills(SecurityUtil.getCurrentIdProfile())));
 		return gotoSkillsJSP(model);
 	}
 
 	@RequestMapping(value = "/edit/skills", method = RequestMethod.POST)
-	public String saveEditTechSkills(@ModelAttribute("skillForm") SkillForm form, BindingResult bindingResult, Model model) {
+	public String saveEditSkills(@Valid @ModelAttribute("skillForm") SkillForm form, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			return gotoSkillsJSP(model);
 		}
-		//TODO Update skills
-		return "redirect:/aly-dutta";
+		editProfileService.updateSkills(SecurityUtil.getCurrentIdProfile(), form.getItems());
+			return "redirect:/aly-dutta";
 	}
 
 	private String gotoSkillsJSP(Model model){
-		model.addAttribute("skillCategories", skillCategoryRepository.findAll(new Sort("id")));
+		model.addAttribute("skillCategories", editProfileService.listSkillCategories());
 		return "edit/skills";
 	}
 }

@@ -46,26 +46,6 @@ public abstract class AbstractEntity<T> extends AbstractModel implements Seriali
 
     @Override
     public String toString() {
-        return String.format("%s[id=%s]", getClass().getSimpleName(),  getId());
+        return String.format("%s[id=%s]", getClass().getSimpleName(), getId());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

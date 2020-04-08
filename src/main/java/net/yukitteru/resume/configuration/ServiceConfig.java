@@ -10,8 +10,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 
-
-
+/**
+ * @author Yukitteru
+ */
 @Configuration
 @ComponentScan({ "net.yukitteru.resume.service.impl",
 				 "net.yukitteru.resume.controller",
@@ -28,6 +29,7 @@ public class ServiceConfig {
 	}
 	
 	private static Resource[] getResources(){
-		return new Resource[] {new ClassPathResource("/application.properties")};
+		return new Resource[] {new ClassPathResource("application.properties"),
+							   new ClassPathResource("logic.properties")};
 	}
 }

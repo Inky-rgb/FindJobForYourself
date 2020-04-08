@@ -12,42 +12,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name="skill_category")
 public class SkillCategory extends AbstractEntity<Long>{
-    private static final long serialVersionUID = -8959739023562086833L;
+	private static final long serialVersionUID = -8959739023562086833L;
+	
+	@Id
+	@Column
+	private Long id;
+	
+	@Column(nullable=false, length=50)
+	private String category;
+	
+	public Long getId() {
+		return id;
+	}
 
-    @Id
-    @Column
-    private Long id;
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @Column(nullable=false, length=50)
-    private String category;
+	public String getCategory() {
+		return category;
+	}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	public void setCategory(String category) {
+		this.category = category;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
