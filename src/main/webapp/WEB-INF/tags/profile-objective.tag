@@ -1,13 +1,16 @@
-<%@ tag  pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 
 <div class="panel panel-primary">
-    <div class="panel-heading"><i class="fa fa-bullseye"></i> Objective</div>
-    <div class="panel-body">
-        <div class="info-block1" style="font-weight: bold; font-size: large">Junior java development
-            position<br><br>
-            <h5 style="font-weight: bold">Summary of Qualifications:</h5>
-            <h5 style>Two Java Professional cources with developing two web applications: blog and resume
-                (Links to demo are provided)</h5>
-        </div>
-    </div>
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			<i class="fa fa-bullseye"></i> Objective <a class="edit-block" href="${pageContext.request.contextPath}/edit#inputObjective">Edit</a>
+		</h3>
+	</div>
+	<div class="panel-body">
+		<h4>Junior java developer position</h4>
+		<p>
+			<strong>Summary of Qualifications:</strong> <br> Three Java professional courses with developing one console application and two web
+			applications: blog and resume (Links to demo are provided)
+		</p>
+	</div>
 </div>
