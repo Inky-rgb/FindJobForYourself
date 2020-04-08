@@ -11,6 +11,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 
+/**
+ * @author Yukitteru
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "net.yukitteru.resume.controller" })

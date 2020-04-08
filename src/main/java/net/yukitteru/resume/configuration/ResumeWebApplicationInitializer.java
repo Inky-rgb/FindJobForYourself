@@ -10,6 +10,7 @@ import javax.servlet.SessionTrackingMode;
 
 import org.sitemesh.builder.SiteMeshFilterBuilder;
 import org.sitemesh.config.ConfigurableSiteMeshFilter;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
@@ -21,8 +22,8 @@ import net.yukitteru.resume.filter.ResumeFilter;
 import net.yukitteru.resume.listener.ApplicationListener;
 
 /**
- * 
- * @author devstudy
+ *
+ * @author Yukitteru
  */
 public class ResumeWebApplicationInitializer implements WebApplicationInitializer {
 
@@ -49,6 +50,7 @@ public class ResumeWebApplicationInitializer implements WebApplicationInitialize
 	private void registerFilters(ServletContext container, WebApplicationContext ctx) {
 		registerFilter(container, ctx.getBean(ResumeFilter.class));
 		registerFilter(container, new CharacterEncodingFilter("UTF-8", true));
+		registerFilter(container, new OpenEntityManagerInViewFilter());
 		registerFilter(container, buildConfigurableSiteMeshFilter(), "sitemesh");
 	}
 
@@ -56,7 +58,7 @@ public class ResumeWebApplicationInitializer implements WebApplicationInitialize
 		String filterName = filterNames.length > 0 ? filterNames[0] : filter.getClass().getSimpleName();
 		container.addFilter(filterName, filter).addMappingForUrlPatterns(null, true, "/*");
 	}
-	
+
 	private void registerSpringMVCDispatcherServlet(ServletContext container, WebApplicationContext ctx) {
 		ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
 		servlet.setLoadOnStartup(1);
@@ -68,7 +70,7 @@ public class ResumeWebApplicationInitializer implements WebApplicationInitialize
 			@Override
 			protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
 				builder
-					.addDecoratorPath("/*", "/WEB-INF/template/page-template.jsp");
+						.addDecoratorPath("/*", "/WEB-INF/template/page-template.jsp");
 			}
 		};
 	}
