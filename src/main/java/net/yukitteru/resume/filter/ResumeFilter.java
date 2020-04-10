@@ -34,8 +34,8 @@ public class ResumeFilter extends AbstractFilter {
 	
 	private void handleException(Throwable th, String requestUrl, HttpServletResponse resp) throws ServletException, IOException {
 		if(production) {
-			if ("/error".equals(requestUrl)) {
-				throw new ServletException(th);
+			if (requestUrl.startsWith("/fragment") || "/error".equals(requestUrl)) {
+				sendErrorStatus(resp);
 			} else {
 				resp.sendRedirect("/error?url="+requestUrl);
 			}
@@ -43,4 +43,25 @@ public class ResumeFilter extends AbstractFilter {
 			throw new ServletException(th);
 		}
 	}
+
+	private void sendErrorStatus(HttpServletResponse resp) throws IOException{
+		resp.reset();
+		resp.getWriter().write("");
+		resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
