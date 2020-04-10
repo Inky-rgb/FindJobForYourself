@@ -31,7 +31,7 @@ var resume = {
             },
             error : function(data) {
                 $('#loadMoreIndicator').css('display', 'none');
-                resume.alert('Error! Try again later...');
+                resume.alert('Возникла ошибка! Обновите страницу и попробуйте еще раз.');
             }
         });
     }
