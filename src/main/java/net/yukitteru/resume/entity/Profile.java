@@ -19,9 +19,15 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
-import net.yukitteru.resume.annotation.constraints.Adulthood;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import org.joda.time.LocalDate;
 import org.joda.time.Years;
+
+import net.yukitteru.resume.annotation.constraints.Adulthood;
+
 
 /**
  *
@@ -29,6 +35,7 @@ import org.joda.time.Years;
  */
 @Entity
 @Table(name = "profile")
+@Document(indexName="profile")
 public class Profile extends AbstractEntity<Long> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -39,11 +46,9 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	private Long id;
 
 	@Column(name = "birth_day")
-	@Adulthood
 	private Date birthDay;
 
 	@Column
-	@NotNull
 	private String city;
 
 	@Column
@@ -59,17 +64,20 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	private String objective;
 
 	@Column(name = "large_photo", length = 255)
+	@JsonIgnore
 	private String largePhoto;
 
 	@Column(name = "small_photo", length = 255)
 	private String smallPhoto;
 
 	@Column(length = 20)
+	@JsonIgnore
 	private String phone;
 
 	@Column(length = 100)
+	@JsonIgnore
 	private String email;
-	
+
 	@Column
 	private String info;
 
@@ -78,14 +86,17 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 
 	@Column(nullable = false, length = 100)
 	private String uid;
-	
+
 	@Column(nullable = false, length = 100)
+	@JsonIgnore
 	private String password;
-	
+
 	@Column(nullable = false)
+	@JsonIgnore
 	private boolean completed;
-	
+
 	@Column(insertable=false)
+	@JsonIgnore
 	private Timestamp created;
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
@@ -93,10 +104,12 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@OrderBy("finishYear DESC, beginYear DESC, id DESC")
+	@JsonIgnore
 	private List<Education> educations;
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@OrderBy("name ASC")
+	@JsonIgnore
 	private List<Hobby> hobbies;
 
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
@@ -109,11 +122,11 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@OrderBy("id ASC")
 	private List<Skill> skills;
-	
+
 	@OneToMany(mappedBy = "profile", cascade={CascadeType.MERGE, CascadeType.PERSIST})
 	@OrderBy("finishDate DESC")
 	private List<Course> courses;
-	
+
 	@Embedded
 	private Contacts contacts;
 
@@ -194,7 +207,6 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 
 	public List<Certificate> getCertificates() {
 		return this.certificates;
-
 	}
 
 	public void setCertificates(List<Certificate> certificates) {
@@ -204,7 +216,6 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 
 	public List<Education> getEducations() {
 		return this.educations;
-
 	}
 
 	public void setEducations(List<Education> educations) {
@@ -317,7 +328,7 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}
-	
+
 	@Transient
 	public int getAge(){
 		LocalDate birthdate = new LocalDate (birthDay);
@@ -325,7 +336,7 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 		Years age = Years.yearsBetween(birthdate, now);
 		return age.getYears();
 	}
-	
+
 	@Transient
 	public String getProfilePhoto(){
 		if(largePhoto != null) {
@@ -334,7 +345,7 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 			return "/static/img/profile-placeholder.png";
 		}
 	}
-	
+
 	public String updateProfilePhotos(String largePhoto, String smallPhoto) {
 		String oldLargeImage = this.largePhoto;
 		setLargePhoto(largePhoto);
@@ -362,9 +373,9 @@ public class Profile extends AbstractEntity<Long> implements Serializable {
 		this.contacts = contacts;
 	}
 
-	private void updateListSetProfile(List<? extends ProfileEntity> list){
-		if(list != null){
-			for(ProfileEntity entity:list){
+	private void updateListSetProfile(List<? extends ProfileEntity> list) {
+		if(list != null) {
+			for(ProfileEntity entity : list) {
 				entity.setProfile(this);
 			}
 		}

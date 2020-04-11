@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author Yukitteru
@@ -30,7 +32,7 @@ public class Certificate extends AbstractEntity<Long> implements Serializable, P
 
 	@Column(name="large_url", nullable=false, length=255)
 	private String largeUrl;
-	
+
 	@Column(name="small_url", nullable=false, length=255)
 	private String smallUrl;
 
@@ -40,8 +42,9 @@ public class Certificate extends AbstractEntity<Long> implements Serializable, P
 	//bi-directional many-to-one association to Profile
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_profile", nullable=false)
+	@JsonIgnore
 	private Profile profile;
-	
+
 	public Certificate() {
 	}
 

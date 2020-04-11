@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.yukitteru.resume.annotation.constraints.EnglishLanguage;
 
 /**
@@ -38,12 +39,13 @@ public class Skill extends AbstractEntity<Long> implements Serializable, Profile
 
 	@Column(nullable=false, length=2147483647)
 	@EnglishLanguage
-	@Size
+	@Size(min=1)
 	private String value;
 
 	//bi-directional many-to-one association to Profile
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_profile", nullable=false)
+	@JsonIgnore
 	private Profile profile;
 
 	public Skill() {
