@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import net.yukitteru.resume.entity.Profile;
 import net.yukitteru.resume.entity.Skill;
@@ -24,8 +26,6 @@ import net.yukitteru.resume.repository.search.ProfileSearchRepository;
 import net.yukitteru.resume.repository.storage.SkillCategoryRepository;
 import net.yukitteru.resume.service.EditProfileService;
 import net.yukitteru.resume.util.DataUtil;
-import org.springframework.transaction.support.TransactionSynchronizationAdapter;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 @Service
 @SuppressWarnings("ALL")
